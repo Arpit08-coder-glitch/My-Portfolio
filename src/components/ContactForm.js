@@ -7,8 +7,6 @@ const ContactForm = () => {
     message: '',
   });
 
-  const [status, setStatus] = useState('');
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -17,28 +15,14 @@ const ContactForm = () => {
     }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setStatus('Sending...');
 
-    try {
-      const response = await fetch('http://localhost:5000/send-email', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
+    // Construct the mailto link
+    const mailtoLink = `mailto:arpitsin28@gmail.com?subject=Contact Form Submission from ${formData.name}&body=${formData.message}`;
 
-      if (response.ok) {
-        setStatus('Message sent successfully!');
-        setFormData({ name: '', email: '', message: '' });
-      } else {
-        throw new Error('Failed to send message');
-      }
-    } catch (error) {
-      setStatus('Error: ' + error.message);
-    }
+    // Open the default email client with prefilled details
+    window.location.href = mailtoLink;
   };
 
   return (
@@ -73,7 +57,6 @@ const ContactForm = () => {
         ></textarea>
         <button type="submit" style={styles.button}>Send</button>
       </form>
-      {status && <p style={styles.status}>{status}</p>}
     </section>
   );
 };
@@ -110,11 +93,6 @@ const styles = {
     border: 'none',
     borderRadius: '5px',
     cursor: 'pointer',
-  },
-  status: {
-    marginTop: '20px',
-    fontSize: '16px',
-    textAlign: 'center',
   },
 };
 
