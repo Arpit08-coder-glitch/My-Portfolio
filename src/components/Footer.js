@@ -5,6 +5,9 @@ const Footer = () => (
     <p>
       © {new Date().getFullYear()} Arpit Singh. All rights reserved.
     </p>
+    <div style={styles.thankYou}>
+      <p>Thank you for visiting my website! I hope you found it helpful and engaging.</p>
+    </div>
     <div style={styles.links}>
       <a
         href="https://www.linkedin.com/in/arpit-singh-279149168/"
@@ -35,13 +38,19 @@ const Footer = () => (
 const styles = {
   footer: {
     backgroundColor: '#1a1a1a',
-    padding: '20px 10px',
+    padding: '20px 10px 100px', // Increased bottom padding
     textAlign: 'center',
     marginTop: '40px',
     borderTop: '1px solid #333',
   },
-  links: {
+  thankYou: {
+    color: '#ffffff',
     marginTop: '10px',
+    fontSize: '16px',
+    fontStyle: 'italic',
+  },
+  links: {
+    marginTop: '15px',
     display: 'flex',
     justifyContent: 'center',
     gap: '15px',
