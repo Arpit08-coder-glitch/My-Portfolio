@@ -1,4 +1,5 @@
 import React from 'react';
+import { Code, BarChart2, FileText } from 'lucide-react'; // Import Lucide icons
 
 const Experience = () => {
   const experiences = [
@@ -7,9 +8,9 @@ const Experience = () => {
       company: 'QuantaSIP Pvt. Ltd.',
       duration: 'April 2024 - Present',
       responsibilities: [
-        'Developed single-page applications with ReactJS and Leaflet.',
-        'Implemented automation scripts for image processing and web scraping.',
-        'Worked on web applications with OTP-based login and PostgreSQL database.',
+        { text: 'Developed single-page applications with ReactJS and Leaflet.', icon: <Code /> },
+        { text: 'Implemented automation scripts for image processing and web scraping.', icon: <FileText /> },
+        { text: 'Worked on web applications with OTP-based login and PostgreSQL database.', icon: <Code /> },
       ],
     },
     {
@@ -17,9 +18,9 @@ const Experience = () => {
       company: 'Friends Union for Energizing Lives',
       duration: 'June 2022 - July 2022',
       responsibilities: [
-        'Analyzed data to propose solutions for improving project efficiency.',
-        'Created interactive dashboards and reports using Power BI.',
-        'Gathered data from Excel, SQL databases, and cloud storage for visualizations.',
+        { text: 'Analyzed data to propose solutions for improving project efficiency.', icon: <BarChart2 /> },
+        { text: 'Created interactive dashboards and reports using Power BI.', icon: <BarChart2 /> },
+        { text: 'Gathered data from Excel, SQL databases, and cloud storage for visualizations.', icon: <FileText /> },
       ],
     },
   ];
@@ -33,7 +34,9 @@ const Experience = () => {
           <p><em>{exp.duration}</em></p>
           <ul>
             {exp.responsibilities.map((res, i) => (
-              <li key={i}>{res}</li>
+              <li key={i} style={styles.listItem}>
+                {res.icon} {res.text} {/* Display the icon next to the text */}
+              </li>
             ))}
           </ul>
         </div>
@@ -54,6 +57,12 @@ const styles = {
   },
   exp: {
     marginBottom: '20px',
+  },
+  listItem: {
+    display: 'flex',
+    alignItems: 'center',
+    marginBottom: '10px',
+    fontSize: '16px',
   },
 };
 

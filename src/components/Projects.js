@@ -1,4 +1,6 @@
 import React from 'react';
+import { motion } from 'framer-motion';
+import { ExternalLink } from 'lucide-react';
 
 const Projects = () => {
   const projects = [
@@ -16,15 +18,28 @@ const Projects = () => {
 
   return (
     <section id="projects" style={styles.section}>
-      <h1 style={styles.heading}>Projects</h1>
+      <motion.h1 
+        style={styles.heading} 
+        initial={{ opacity: 0, y: -20 }} 
+        animate={{ opacity: 1, y: 0 }} 
+        transition={{ duration: 0.6 }}
+      >
+        Projects
+      </motion.h1>
+
       {projects.map((project, index) => (
-        <div key={index} style={styles.project}>
-          <h2>{project.name}</h2>
-          <p>{project.description}</p>
+        <motion.div
+          key={index}
+          style={styles.project}
+          whileHover={{ scale: 1.05, backgroundColor: '#2a2a2a' }}
+          transition={{ type: 'spring', stiffness: 300 }}
+        >
+          <h2 style={styles.projectTitle}>{project.name}</h2>
+          <p style={styles.description}>{project.description}</p>
           <a href={project.link} target="_blank" rel="noopener noreferrer" style={styles.link}>
-            View Project
+            View Project <ExternalLink size={16} style={styles.icon} />
           </a>
-        </div>
+        </motion.div>
       ))}
     </section>
   );
@@ -35,17 +50,40 @@ const styles = {
     padding: '40px',
     color: '#fff',
     backgroundColor: '#1a1a1a',
+    minHeight: '100vh',
   },
   heading: {
-    fontSize: '28px',
-    marginBottom: '20px',
+    fontSize: '32px',
+    marginBottom: '30px',
+    textAlign: 'center',
   },
   project: {
+    padding: '20px',
+    backgroundColor: '#242424',
+    borderRadius: '10px',
     marginBottom: '20px',
+    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.3)',
+    transition: 'background-color 0.3s ease',
+  },
+  projectTitle: {
+    fontSize: '24px',
+    color: '#4caf50',
+  },
+  description: {
+    fontSize: '16px',
+    margin: '10px 0',
+    lineHeight: '1.6',
   },
   link: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '5px',
     color: '#4caf50',
     textDecoration: 'none',
+    fontWeight: 'bold',
+  },
+  icon: {
+    marginLeft: '5px',
   },
 };
 
