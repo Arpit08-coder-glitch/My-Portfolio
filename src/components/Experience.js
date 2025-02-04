@@ -1,5 +1,5 @@
 import React from 'react';
-import { Code, BarChart2, FileText } from 'lucide-react'; // Import Lucide icons
+import { Code, BarChart2, FileText, Database, Cpu, MapPin } from 'lucide-react'; // Import Lucide icons
 
 const Experience = () => {
   const experiences = [
@@ -9,8 +9,10 @@ const Experience = () => {
       duration: 'April 2024 - Present',
       responsibilities: [
         { text: 'Developed single-page applications with ReactJS and Leaflet.', icon: <Code /> },
-        { text: 'Implemented automation scripts for image processing and web scraping.', icon: <FileText /> },
-        { text: 'Worked on web applications with OTP-based login and PostgreSQL database.', icon: <Code /> },
+        { text: 'Implemented automation scripts for image processing and web scraping using Python.', icon: <FileText /> },
+        { text: 'Worked on web applications with OTP-based login and PostgreSQL database.', icon: <Database /> },
+        { text: 'Integrated GeoServer for GIS data visualization.', icon: <MapPin /> },
+        { text: 'Built RESTful APIs using NodeJS and Spring Boot.', icon: <Cpu /> },
       ],
     },
     {
@@ -21,6 +23,7 @@ const Experience = () => {
         { text: 'Analyzed data to propose solutions for improving project efficiency.', icon: <BarChart2 /> },
         { text: 'Created interactive dashboards and reports using Power BI.', icon: <BarChart2 /> },
         { text: 'Gathered data from Excel, SQL databases, and cloud storage for visualizations.', icon: <FileText /> },
+        { text: 'Performed data transformation and modeling for insightful analytics.', icon: <Database /> },
       ],
     },
   ];

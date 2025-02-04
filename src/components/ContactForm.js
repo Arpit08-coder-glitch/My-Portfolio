@@ -137,10 +137,12 @@ const styles = {
     backgroundColor: '#4caf50',
     color: '#fff',
     border: 'none',
+    align: 'center',
     borderRadius: '5px',
     cursor: 'pointer',
     fontWeight: 'bold',
     fontSize: '16px',
+    outerWidth: '400px',
   },
   successMessage: {
     textAlign: 'center',

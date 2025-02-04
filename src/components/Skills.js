@@ -1,5 +1,5 @@
 import React from 'react';
-import { Code, Cpu, Database, MapPin } from 'lucide-react'; // Import Lucide icons
+import { Code, Cpu, Database, MapPin, Palette, Wrench, BarChart, Brain } from 'lucide-react';
 
 const Skills = () => {
   const skills = [
@@ -7,11 +7,29 @@ const Skills = () => {
     { name: 'C', icon: <Code /> },
     { name: 'C++', icon: <Code /> },
     { name: 'Python', icon: <Code /> },
+    { name: 'HTML', icon: <Code /> },
+    { name: 'CSS', icon: <Code /> },
+    { name: 'JavaScript', icon: <Code /> },
     { name: 'ReactJS', icon: <Code /> },
+    { name: 'Angular', icon: <Code /> },
     { name: 'NodeJS', icon: <Cpu /> },
+    { name: 'Spring Boot', icon: <Cpu /> },
     { name: 'Firebase', icon: <Database /> },
+    { name: 'MySQL', icon: <Database /> },
     { name: 'PostgreSQL', icon: <Database /> },
     { name: 'GeoServer', icon: <MapPin /> },
+    { name: 'Android Development', icon: <Cpu /> },
+    { name: 'Database Management', icon: <Database /> },
+    { name: 'Data Analytics', icon: <BarChart /> },
+    { name: 'Data Structures & Algorithms', icon: <Brain /> },
+    { name: 'UI/UX Design', icon: <Palette /> },
+    { name: 'Visual Studio Code', icon: <Wrench /> },
+    { name: 'Unity 3D', icon: <Wrench /> },
+    { name: 'Android Studio', icon: <Wrench /> },
+    { name: 'Blender', icon: <Wrench /> },
+    { name: 'Git/Github', icon: <Wrench /> },
+    { name: 'Figma', icon: <Palette /> },
+    { name: 'Power BI', icon: <BarChart /> },
   ];
 
   return (
@@ -20,7 +38,7 @@ const Skills = () => {
       <ul style={styles.skillList}>
         {skills.map((skill, index) => (
           <li key={index} style={styles.skill}>
-            {skill.icon}{skill.name} {/* Display the icon next to the skill */}
+            {skill.icon}{skill.name}
           </li>
         ))}
       </ul>
