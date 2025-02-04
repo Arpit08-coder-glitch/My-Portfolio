@@ -37,8 +37,8 @@ const Skills = () => {
       <h1 style={styles.heading}>Skills</h1>
       <ul style={styles.skillList}>
         {skills.map((skill, index) => (
-          <li key={index} style={styles.skill}>
-            {skill.icon}{skill.name}
+          <li key={index} style={styles.skill} className="skill-item">
+            {skill.icon} <span style={styles.skillText}>{skill.name}</span>
           </li>
         ))}
       </ul>
@@ -68,7 +68,23 @@ const styles = {
     fontSize: '14px',
     display: 'flex',
     alignItems: 'center',
+    gap: '8px',
+    cursor: 'pointer',
+    transition: 'all 0.3s ease',
   },
+  skillText: {
+    marginLeft: '5px',
+  }
 };
+
+// Adding hover effect using CSS-in-JS
+const hoverStyle = document.createElement('style');
+hoverStyle.innerHTML = `
+  .skill-item:hover {
+    background-color: #555;
+    transform: scale(1.05);
+  }
+`;
+document.head.appendChild(hoverStyle);
 
 export default Skills;
