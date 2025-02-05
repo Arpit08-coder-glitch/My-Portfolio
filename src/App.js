@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import Header from './components/Header';
 import AboutMe from './components/AboutMe';
 import Skills from './components/Skills';
 import Experience from './components/Experience';
@@ -13,7 +14,10 @@ const App = () => {
       {/* Navigation Bar */}
       <Navbar />
 
-      {/* Sections */}
+      {/* Header Section */}
+      <Header />
+
+      {/* Main Sections */}
       <main style={styles.main}>
         <AboutMe />
         <Skills />
