@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faDownload, faCode, faLaptopCode } from "@fortawesome/free-solid-svg-icons";
+import { faDownload, faLaptopCode } from "@fortawesome/free-solid-svg-icons";
 
 const Header = () => {
   const [bgColor, setBgColor] = useState("#1E1E1E");

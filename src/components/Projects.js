@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, MapPin, Database, Code } from 'lucide-react';
+import { ExternalLink} from 'lucide-react';
 
 const Projects = () => {
   const projects = [
