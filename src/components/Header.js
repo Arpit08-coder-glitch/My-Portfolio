@@ -4,31 +4,56 @@ import { faDownload, faLaptopCode } from "@fortawesome/free-solid-svg-icons";
 
 const Header = () => {
   const [bgColor, setBgColor] = useState("#1E1E1E");
+  const [text, setText] = useState("");
+  const description = "A Passionate Developer who loves to code and create amazing web experiences.";
+  const [charIndex, setCharIndex] = useState(0);
 
-  // Function to change background color dynamically
+  // Background color animation
   useEffect(() => {
     const interval = setInterval(() => {
       const colors = ["#1E1E1E", "#282828", "#333", "#444"];
       setBgColor(colors[Math.floor(Math.random() * colors.length)]);
-    }, 3000); // Change every 3 seconds
+    }, 3000);
 
     return () => clearInterval(interval);
   }, []);
 
+  // Typing animation for description
+  useEffect(() => {
+    if (charIndex < description.length) {
+      const typingEffect = setTimeout(() => {
+        setText(description.substring(0, charIndex + 1));
+        setCharIndex((prev) => prev + 1);
+      }, 100); // Speed of typing
+
+      return () => clearTimeout(typingEffect);
+    }
+  }, [charIndex, description]);
+
   return (
     <header style={{ ...styles.header, backgroundColor: bgColor }}>
       <div style={styles.content}>
+        {/* Profile Picture with Animation */}
+        <img src="/profile.jpg" alt="Arpit Singh" style={styles.profilePic} className="profile-pic" />
+
         <h1>
           Hi, I'm Arpit Singh <span style={{ fontSize: "30px" }}>👋</span>
         </h1>
-        <p>
-          A Passionate Developer <FontAwesomeIcon icon={faLaptopCode} /> who loves to code and create amazing web experiences.
+
+        {/* Typing animation for the description */}
+        <p style={styles.typingText}>
+          {text} <FontAwesomeIcon icon={faLaptopCode} />
+          <span style={styles.cursor}>|</span>
         </p>
-        <a href="https://drive.google.com/uc?export=download&id=1ZNc1II5xuwftvPwoiqfaz4MLDcO0sj6O" download="Arpit_Singh_Resume.pdf">
-  <button style={styles.button}>
-    <FontAwesomeIcon icon={faDownload} /> Download Resume
-  </button>
-</a>
+
+        <a
+          href="https://drive.google.com/uc?export=download&id=1ZNc1II5xuwftvPwoiqfaz4MLDcO0sj6O"
+          download="Arpit_Singh_Resume.pdf"
+        >
+          <button style={styles.button} className="download-button">
+            <FontAwesomeIcon icon={faDownload} /> Download Resume
+          </button>
+        </a>
       </div>
     </header>
   );
@@ -43,6 +68,24 @@ const styles = {
   content: {
     margin: "auto",
   },
+  profilePic: {
+    width: "150px",
+    height: "150px",
+    borderRadius: "50%",
+    objectFit: "cover",
+    marginBottom: "15px",
+    border: "4px solid white",
+    boxShadow: "0 0 15px rgba(0, 0, 0, 0.2)",
+    transition: "transform 0.3s ease-in-out",
+  },
+  typingText: {
+    fontSize: "18px",
+    fontWeight: "500",
+    minHeight: "24px", // Prevents shifting when animating
+  },
+  cursor: {
+    animation: "blink 1s infinite",
+  },
   button: {
     marginTop: "15px",
     padding: "12px 20px",
@@ -55,10 +98,28 @@ const styles = {
     transition: "all 0.3s ease",
     fontWeight: "bold",
   },
-  buttonHover: {
-    backgroundColor: "#E04E2A",
-    transform: "scale(1.05)",
-  },
 };
+
+// Adding CSS Animations
+const css = `
+  .profile-pic:hover {
+    transform: scale(1.1);
+  }
+  
+  .download-button:hover {
+    background-color: #E04E2A;
+    transform: scale(1.05);
+  }
+  
+  @keyframes blink {
+    50% { opacity: 0; }
+  }
+`;
+
+// Adding the styles dynamically
+const styleSheet = document.createElement("style");
+styleSheet.type = "text/css";
+styleSheet.innerText = css;
+document.head.appendChild(styleSheet);
 
 export default Header;

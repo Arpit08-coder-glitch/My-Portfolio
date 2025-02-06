@@ -1,6 +1,5 @@
 import React from 'react';
 import { Code, Cpu, Database, MapPin, Palette, Wrench, BarChart, Brain, Cloud } from 'lucide-react';
-
 const Skills = () => {
   const skills = [
     { name: 'Java', icon: <Code /> },
