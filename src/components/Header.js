@@ -24,11 +24,11 @@ const Header = () => {
         <p>
           A Passionate Developer <FontAwesomeIcon icon={faLaptopCode} /> who loves to code and create amazing web experiences.
         </p>
-        <a href="https://drive.google.com/file/d/1ZNc1II5xuwftvPwoiqfaz4MLDcO0sj6O/view?usp=sharing" download="Arpit_Singh_Resume.pdf">
-          <button style={styles.button}>
-            <FontAwesomeIcon icon={faDownload} /> Download Resume
-          </button>
-        </a>
+        <a href="https://drive.google.com/uc?export=download&id=1ZNc1II5xuwftvPwoiqfaz4MLDcO0sj6O" download="Arpit_Singh_Resume.pdf">
+  <button style={styles.button}>
+    <FontAwesomeIcon icon={faDownload} /> Download Resume
+  </button>
+</a>
       </div>
     </header>
   );
