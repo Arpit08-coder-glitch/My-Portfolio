@@ -1,5 +1,5 @@
 import React from 'react';
-import { Code, Cpu, Database, MapPin, Palette, Wrench, BarChart, Brain } from 'lucide-react';
+import { Code, Cpu, Database, MapPin, Palette, Wrench, BarChart, Brain, Cloud } from 'lucide-react';
 
 const Skills = () => {
   const skills = [
@@ -15,7 +15,10 @@ const Skills = () => {
     { name: 'NodeJS', icon: <Cpu /> },
     { name: 'Spring Boot', icon: <Cpu /> },
     { name: 'Firebase', icon: <Database /> },
-    { name: 'MySQL', icon: <Database /> },
+    { name: 'Firebase Firestore', icon: <Cloud /> },
+    { name: 'Firebase Realtime Database', icon: <Cloud /> },
+    { name: 'Firebase Authentication', icon: <Cloud /> },
+    { name: 'Firebase Hosting', icon: <Cloud /> },
     { name: 'PostgreSQL', icon: <Database /> },
     { name: 'GeoServer', icon: <MapPin /> },
     { name: 'Android Development', icon: <Cpu /> },
@@ -29,7 +32,7 @@ const Skills = () => {
     { name: 'Blender', icon: <Wrench /> },
     { name: 'Git/Github', icon: <Wrench /> },
     { name: 'Figma', icon: <Palette /> },
-    { name: 'Power BI', icon: <BarChart /> },
+    { name: 'Power BI', icon: <BarChart /> }
   ];
 
   return (
