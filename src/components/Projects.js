@@ -1,49 +1,67 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink} from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
+import BhuQuantaImage from './images/BhuQuanta.png';
+import ParkingImage from './images/Parking.png';
 
 const Projects = () => {
   const projects = [
     {
       name: 'BhuQuanta',
-      description: 'A comprehensive web application built with ReactJS and GeoServer, designed for geospatial data visualization. The project integrates an OTP-based login system for secure access and uses PostgreSQL for efficient database management. Users can interact with maps, overlay different geospatial layers, and analyze geographic trends dynamically.',
+      description:
+        'A web application built with ReactJS and GeoServer for geospatial data visualization, integrating an OTP-based login and PostgreSQL database.',
       technologies: ['ReactJS', 'GeoServer', 'PostgreSQL', 'Leaflet'],
       link: 'http://bhuquanta.quantasip.com/',
+      image: BhuQuantaImage,
     },
     {
       name: 'Parking Data Management System',
-      description: 'An advanced web application developed using Angular and Spring Boot, aimed at optimizing parking space management. This project leverages GeoServer for displaying geospatial data and PostgreSQL for maintaining a structured database. The system supports real-time parking spot tracking, data analytics, and user-friendly dashboards for seamless management.',
+      description:
+        'An Angular and Spring Boot-based parking management system, utilizing GeoServer and PostgreSQL for real-time parking tracking and data analytics.',
       technologies: ['Angular', 'Spring Boot', 'GeoServer', 'PostgreSQL'],
       link: 'http://waytest.quantasip.com/way/user/editor',
-    }
+      image: ParkingImage,
+    },
   ];
 
   return (
     <section id="projects" style={styles.section}>
-      <motion.h1 
-        style={styles.heading} 
-        initial={{ opacity: 0, y: -20 }} 
-        animate={{ opacity: 1, y: 0 }} 
+      <motion.h1
+        style={styles.heading}
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
         Projects
       </motion.h1>
-
-      {projects.map((project, index) => (
-        <motion.div
-          key={index}
-          style={styles.project}
-          whileHover={{ scale: 1.05, backgroundColor: '#2a2a2a' }}
-          transition={{ type: 'spring', stiffness: 300 }}
-        >
-          <h2 style={styles.projectTitle}>{project.name}</h2>
-          <p style={styles.description}>{project.description}</p>
-          <p style={styles.technologies}><strong>Technologies:</strong> {project.technologies.join(', ')}</p>
-          <a href={project.link} target="_blank" rel="noopener noreferrer" style={styles.link}>
-            View Project <ExternalLink size={16} style={styles.icon} />
-          </a>
-        </motion.div>
-      ))}
+      
+      <div style={styles.gridContainer}>
+        {projects.map((project, index) => (
+          <motion.div
+            key={index}
+            style={styles.card}
+            whileHover={{ scale: 1.05 }}
+            transition={{ type: 'spring', stiffness: 300 }}
+          >
+            <img src={project.image} alt={project.name} style={styles.image} />
+            <div style={styles.details}>
+              <h2 style={styles.projectTitle}>{project.name}</h2>
+              <p style={styles.description}>{project.description}</p>
+              <p style={styles.technologies}>
+                <strong>Technologies:</strong> {project.technologies.join(', ')}
+              </p>
+              <a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={styles.link}
+              >
+                View Project <ExternalLink size={16} style={styles.icon} />
+              </a>
+            </div>
+          </motion.div>
+        ))}
+      </div>
     </section>
   );
 };
@@ -60,25 +78,39 @@ const styles = {
     marginBottom: '30px',
     textAlign: 'center',
   },
-  project: {
-    padding: '20px',
+  gridContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    gap: '20px',
+    flexWrap: 'wrap',
+  },
+  card: {
+    width: '400px',
     backgroundColor: '#242424',
     borderRadius: '10px',
-    marginBottom: '20px',
+    padding: '20px',
+    textAlign: 'center',
     boxShadow: '0 4px 8px rgba(0, 0, 0, 0.3)',
-    transition: 'background-color 0.3s ease',
+    transition: 'transform 0.3s ease',
+  },
+  image: {
+    width: '100%',
+    borderRadius: '10px',
+  },
+  details: {
+    marginTop: '10px',
   },
   projectTitle: {
-    fontSize: '24px',
+    fontSize: '20px',
     color: '#4caf50',
   },
   description: {
-    fontSize: '16px',
+    fontSize: '14px',
     margin: '10px 0',
-    lineHeight: '1.6',
+    lineHeight: '1.5',
   },
   technologies: {
-    fontSize: '14px',
+    fontSize: '13px',
     color: '#bbb',
     marginBottom: '10px',
   },
@@ -89,6 +121,7 @@ const styles = {
     color: '#4caf50',
     textDecoration: 'none',
     fontWeight: 'bold',
+    justifyContent: 'center',
   },
   icon: {
     marginLeft: '5px',
