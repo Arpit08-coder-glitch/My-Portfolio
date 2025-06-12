@@ -7,7 +7,7 @@ import Skills from './components/Skills';
 import Experience from './components/Experience';
 import Projects from './components/Projects';
 import ContactForm from './components/ContactForm';
-
+                                                  
 const App = () => {
   return (
     <div style={styles.app}>
