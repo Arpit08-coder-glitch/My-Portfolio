@@ -27,20 +27,25 @@ const ContactForm = () => {
   };
 
   return (
-    <motion.section 
-      id="contact" 
+    <motion.section
+      id="contact"
       style={styles.section}
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
     >
+      <div style={styles.starsOverlay}></div>
+
       <h1 style={styles.heading}>Contact Me</h1>
+
       {isSubmitted ? (
-        <motion.p 
+        <motion.p
           style={styles.successMessage}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-        >Thank you for reaching out! 🎉</motion.p>
+        >
+          Thank you for reaching out! 🚀
+        </motion.p>
       ) : (
         <form onSubmit={handleSubmit} style={styles.form}>
           <label style={styles.label}><User size={16} style={styles.icon} /> Name</label>
@@ -75,13 +80,14 @@ const ContactForm = () => {
             required
           ></textarea>
 
-          <motion.button 
-            whileHover={{ scale: 1.05 }} 
-            whileTap={{ scale: 0.95 }} 
-            type="submit" 
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            type="submit"
             style={styles.button}
+            className="space-btn"
           >
-            Send ✉️
+            Send 🚀
           </motion.button>
         </form>
       )}
@@ -89,66 +95,115 @@ const ContactForm = () => {
   );
 };
 
+// Styles
 const styles = {
   section: {
-    padding: '40px',
+    position: 'relative',
+    padding: '60px 20px',
     color: '#fff',
-    backgroundColor: '#121212',
-    margin: 'auto',
-    borderRadius: '10px',
-    boxShadow: '0 4px 15px rgba(0,0,0,0.5)',
+    background: 'radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%)',
+    borderRadius: '12px',
+    boxShadow: '0 0 40px rgba(0, 255, 255, 0.1)',
+    overflow: 'hidden',
+    fontFamily: "'Orbitron', sans-serif",
+    zIndex: 1,
+  },
+  starsOverlay: {
+    position: "absolute",
+    width: "200%",
+    height: "200%",
+    top: 0,
+    left: 0,
+    backgroundImage: "url('https://raw.githubusercontent.com/VincentGarreau/particles.js/master/demo/media/stars.png')",
+    backgroundRepeat: "repeat",
+    animation: "moveStars 60s linear infinite",
+    zIndex: 0,
+    opacity: 0.25,
   },
   heading: {
-    fontSize: '28px',
-    marginBottom: '20px',
+    fontSize: '30px',
+    marginBottom: '30px',
     textAlign: 'center',
+    color: '#00ffff',
+    zIndex: 2,
+    position: 'relative',
   },
   form: {
     display: 'flex',
     flexDirection: 'column',
-    gap: '15px',
+    gap: '20px',
+    position: 'relative',
+    zIndex: 2,
   },
   label: {
     display: 'flex',
     alignItems: 'center',
     gap: '5px',
     fontWeight: 'bold',
+    fontSize: '14px',
+    color: '#00ffff',
   },
   icon: {
-    color: '#4caf50',
+    color: '#00ffff',
   },
   input: {
-    padding: '10px',
-    borderRadius: '5px',
-    border: '1px solid #4caf50',
-    backgroundColor: '#1e1e1e',
+    padding: '12px',
+    borderRadius: '8px',
+    border: '1px solid #00ffff',
+    backgroundColor: '#101820',
     color: '#fff',
+    fontSize: '16px',
+    boxShadow: '0 0 10px rgba(0, 255, 255, 0.2)',
   },
   textarea: {
-    padding: '10px',
-    borderRadius: '5px',
-    border: '1px solid #4caf50',
-    backgroundColor: '#1e1e1e',
+    padding: '12px',
+    borderRadius: '8px',
+    border: '1px solid #00ffff',
+    backgroundColor: '#101820',
     color: '#fff',
+    fontSize: '16px',
     minHeight: '100px',
+    boxShadow: '0 0 10px rgba(0, 255, 255, 0.2)',
   },
   button: {
     padding: '12px 20px',
-    backgroundColor: '#4caf50',
-    color: '#fff',
+    backgroundColor: '#00ffff',
+    color: '#000',
     border: 'none',
-    align: 'center',
-    borderRadius: '5px',
+    borderRadius: '8px',
     cursor: 'pointer',
     fontWeight: 'bold',
     fontSize: '16px',
-    outerWidth: '400px',
+    boxShadow: '0 0 10px #00ffff, 0 0 20px #00ffff',
+    transition: 'all 0.3s ease-in-out',
   },
   successMessage: {
     textAlign: 'center',
     fontSize: '18px',
-    color: '#4caf50',
+    color: '#00ff99',
+    zIndex: 2,
+    position: 'relative',
   },
 };
+
+// Inject additional CSS
+const css = `
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+
+  @keyframes moveStars {
+    from { transform: translate(0, 0); }
+    to { transform: translate(-50%, -50%); }
+  }
+
+  .space-btn:hover {
+    background-color: #00cccc;
+    transform: scale(1.05);
+  }
+`;
+
+const styleSheet = document.createElement("style");
+styleSheet.type = "text/css";
+styleSheet.innerText = css;
+document.head.appendChild(styleSheet);
 
 export default ContactForm;

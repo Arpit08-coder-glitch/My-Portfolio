@@ -1,10 +1,10 @@
 import React from 'react';
-import { FaLinkedin, FaGithub, FaEnvelope, FaInstagram} from 'react-icons/fa';
+import { FaLinkedin, FaGithub, FaEnvelope, FaInstagram } from 'react-icons/fa';
 import { SiX } from 'react-icons/si';
 
 const Footer = () => (
   <footer style={styles.footer}>
-    <p>
+    <p style={styles.copy}>
       © {new Date().getFullYear()} Arpit Singh. All rights reserved.
     </p>
     <div style={styles.thankYou}>
@@ -16,8 +16,8 @@ const Footer = () => (
         target="_blank"
         rel="noopener noreferrer"
         style={styles.iconLink}
-        onMouseOver={(e) => (e.currentTarget.style.color = '#0077b5')}
-        onMouseOut={(e) => (e.currentTarget.style.color = '#4caf50')}
+        onMouseOver={(e) => (e.currentTarget.style.color = '#00aaff')}
+        onMouseOut={(e) => (e.currentTarget.style.color = '#00ffcc')}
       >
         <FaLinkedin size={24} />
       </a>
@@ -26,16 +26,16 @@ const Footer = () => (
         target="_blank"
         rel="noopener noreferrer"
         style={styles.iconLink}
-        onMouseOver={(e) => (e.currentTarget.style.color = '#6e5494')}
-        onMouseOut={(e) => (e.currentTarget.style.color = '#4caf50')}
+        onMouseOver={(e) => (e.currentTarget.style.color = '#a070ff')}
+        onMouseOut={(e) => (e.currentTarget.style.color = '#00ffcc')}
       >
         <FaGithub size={24} />
       </a>
       <a
         href="mailto:arpitsin28@gmail.com"
         style={styles.iconLink}
-        onMouseOver={(e) => (e.currentTarget.style.color = '#d44638')}
-        onMouseOut={(e) => (e.currentTarget.style.color = '#4caf50')}
+        onMouseOver={(e) => (e.currentTarget.style.color = '#ff6f61')}
+        onMouseOut={(e) => (e.currentTarget.style.color = '#00ffcc')}
       >
         <FaEnvelope size={24} />
       </a>
@@ -44,8 +44,8 @@ const Footer = () => (
         target="_blank"
         rel="noopener noreferrer"
         style={styles.iconLink}
-        onMouseOver={(e) => (e.currentTarget.style.color = '#e4405f')}
-        onMouseOut={(e) => (e.currentTarget.style.color = '#4caf50')}
+        onMouseOver={(e) => (e.currentTarget.style.color = '#ff2a68')}
+        onMouseOut={(e) => (e.currentTarget.style.color = '#00ffcc')}
       >
         <FaInstagram size={24} />
       </a>
@@ -55,7 +55,7 @@ const Footer = () => (
         rel="noopener noreferrer"
         style={styles.iconLink}
         onMouseOver={(e) => (e.currentTarget.style.color = '#ffffff')}
-        onMouseOut={(e) => (e.currentTarget.style.color = '#4caf50')}
+        onMouseOut={(e) => (e.currentTarget.style.color = '#00ffcc')}
       >
         <SiX size={24} />
       </a>
@@ -65,29 +65,40 @@ const Footer = () => (
 
 const styles = {
   footer: {
-    backgroundColor: '#1a1a1a',
-    padding: '20px 10px 100px', // Increased bottom padding
+    backgroundColor: '#0a0a0a',
+    padding: '30px 10px 100px',
     textAlign: 'center',
-    marginTop: '40px',
-    borderTop: '1px solid #333',
+    borderTop: '1px solid rgba(0, 255, 255, 0.1)',
+    boxShadow: '0 -5px 25px rgba(0, 255, 255, 0.1)',
+  },
+  copy: {
+    color: '#cccccc',
+    fontSize: '14px',
+    letterSpacing: '0.5px',
   },
   thankYou: {
     color: '#ffffff',
-    marginTop: '10px',
-    fontSize: '16px',
+    marginTop: '12px',
+    fontSize: '15px',
     fontStyle: 'italic',
+    maxWidth: '600px',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    lineHeight: '1.6',
   },
   links: {
-    marginTop: '15px',
+    marginTop: '20px',
     display: 'flex',
     justifyContent: 'center',
-    gap: '20px',
+    gap: '22px',
+    flexWrap: 'wrap',
   },
   iconLink: {
-    color: '#4caf50',
+    color: '#00ffcc',
     textDecoration: 'none',
     fontSize: '24px',
-    transition: 'color 0.3s ease',
+    transition: 'color 0.3s ease, transform 0.3s ease',
+    willChange: 'transform',
   },
 };
 

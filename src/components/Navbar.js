@@ -6,34 +6,46 @@ const Navbar = () => (
     <style>
       {`
         html {
-          scroll-behavior: smooth; /* Smooth scrolling */
+          scroll-behavior: smooth;
+        }
+
+        @keyframes glow {
+          0% {
+            box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
+          }
+          50% {
+            box-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff;
+          }
+          100% {
+            box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
+          }
         }
       `}
     </style>
     <nav style={styles.navbar}>
       <ul style={styles.navList}>
         <li style={styles.navItem}>
-          <a href="#about" style={styles.link} onMouseEnter={(e) => hoverEffect(e)} onMouseLeave={(e) => removeHoverEffect(e)}>
+          <a href="#about" style={styles.link} onMouseEnter={hoverEffect} onMouseLeave={removeHoverEffect}>
             <FaUser style={styles.icon} />
           </a>
         </li>
         <li style={styles.navItem}>
-          <a href="#skills" style={styles.link} onMouseEnter={(e) => hoverEffect(e)} onMouseLeave={(e) => removeHoverEffect(e)}>
+          <a href="#skills" style={styles.link} onMouseEnter={hoverEffect} onMouseLeave={removeHoverEffect}>
             <FaCode style={styles.icon} />
           </a>
         </li>
         <li style={styles.navItem}>
-          <a href="#experience" style={styles.link} onMouseEnter={(e) => hoverEffect(e)} onMouseLeave={(e) => removeHoverEffect(e)}>
+          <a href="#experience" style={styles.link} onMouseEnter={hoverEffect} onMouseLeave={removeHoverEffect}>
             <FaBriefcase style={styles.icon} />
           </a>
         </li>
         <li style={styles.navItem}>
-          <a href="#projects" style={styles.link} onMouseEnter={(e) => hoverEffect(e)} onMouseLeave={(e) => removeHoverEffect(e)}>
+          <a href="#projects" style={styles.link} onMouseEnter={hoverEffect} onMouseLeave={removeHoverEffect}>
             <FaProjectDiagram style={styles.icon} />
           </a>
         </li>
         <li style={styles.navItem}>
-          <a href="#contact" style={styles.link} onMouseEnter={(e) => hoverEffect(e)} onMouseLeave={(e) => removeHoverEffect(e)}>
+          <a href="#contact" style={styles.link} onMouseEnter={hoverEffect} onMouseLeave={removeHoverEffect}>
             <FaEnvelope style={styles.icon} />
           </a>
         </li>
@@ -44,17 +56,19 @@ const Navbar = () => (
 
 const styles = {
   navbar: {
-    backgroundColor: 'rgba(26, 26, 26, 0.8)', // Translucent background
-    padding: '10px 20px',
+    background: 'radial-gradient(circle at center, #1b2735, #090a0f)',
+    padding: '12px 20px',
     position: 'fixed',
-    bottom: 10, // Position at the bottom
+    bottom: 20,
     left: '50%',
     transform: 'translateX(-50%)',
-    borderRadius: '20px', // Rounded corners
+    borderRadius: '20px',
     zIndex: 1000,
-    width: '90%', // Optional: Adjust width for responsiveness
-    maxWidth: '500px', // Optional: Limit width on larger screens
-    boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.5)', // Optional: Add some shadow
+    width: '90%',
+    maxWidth: '500px',
+    border: '1px solid #00ffff',
+    boxShadow: '0 0 30px rgba(0, 255, 255, 0.2)',
+    backdropFilter: 'blur(10px)',
   },
   navList: {
     display: 'flex',
@@ -69,33 +83,35 @@ const styles = {
     textAlign: 'center',
   },
   link: {
-    color: '#fff',
+    color: '#00ffff',
     textDecoration: 'none',
-    fontWeight: 'bold',
-    fontSize: '16px',
+    fontSize: '18px',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     height: '50px',
     width: '50px',
-    borderRadius: '50%', // Rounded button effect
-    backgroundColor: 'rgba(255, 255, 255, 0.1)', // Light translucent background for icons
-    transition: 'transform 0.3s, background-color 0.3s', // Smooth hover animations
+    borderRadius: '50%',
+    backgroundColor: 'rgba(0, 255, 255, 0.08)',
+    transition: 'transform 0.3s, background-color 0.3s, box-shadow 0.3s',
+    boxShadow: '0 0 10px rgba(0, 255, 255, 0.3)',
   },
   icon: {
     fontSize: '20px',
-    transition: 'transform 0.3s', // Smooth scale for hover effect
+    transition: 'transform 0.3s ease',
   },
 };
 
 const hoverEffect = (e) => {
-  e.target.style.backgroundColor = 'rgba(255, 255, 255, 0.3)';
-  e.target.firstChild.style.transform = 'scale(1.2)';
+  e.currentTarget.style.backgroundColor = 'rgba(0, 255, 255, 0.2)';
+  e.currentTarget.style.boxShadow = '0 0 20px #00ffff, 0 0 30px #00ffff';
+  e.currentTarget.firstChild.style.transform = 'scale(1.3)';
 };
 
 const removeHoverEffect = (e) => {
-  e.target.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
-  e.target.firstChild.style.transform = 'scale(1)';
+  e.currentTarget.style.backgroundColor = 'rgba(0, 255, 255, 0.08)';
+  e.currentTarget.style.boxShadow = '0 0 10px rgba(0, 255, 255, 0.3)';
+  e.currentTarget.firstChild.style.transform = 'scale(1)';
 };
 
 export default Navbar;

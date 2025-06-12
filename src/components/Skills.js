@@ -1,5 +1,16 @@
 import React from 'react';
-import { Code, Cpu, Database, MapPin, Palette, Wrench, BarChart, Brain, Cloud } from 'lucide-react';
+import {
+  Code,
+  Cpu,
+  Database,
+  MapPin,
+  Palette,
+  Wrench,
+  BarChart,
+  Brain,
+  Cloud
+} from 'lucide-react';
+
 const Skills = () => {
   const skills = [
     { name: 'Java', icon: <Code /> },
@@ -36,11 +47,12 @@ const Skills = () => {
 
   return (
     <section id="skills" style={styles.section}>
-      <h1 style={styles.heading}>Skills</h1>
+      <h1 style={styles.heading}>🪐 Skills</h1>
       <ul style={styles.skillList}>
         {skills.map((skill, index) => (
           <li key={index} style={styles.skill} className="skill-item">
-            {skill.icon} <span style={styles.skillText}>{skill.name}</span>
+            <span style={styles.icon}>{skill.icon}</span>
+            <span style={styles.skillText}>{skill.name}</span>
           </li>
         ))}
       </ul>
@@ -50,41 +62,59 @@ const Skills = () => {
 
 const styles = {
   section: {
-    padding: '40px',
-    color: '#fff',
-    backgroundColor: '#1a1a1a',
+    padding: '50px 30px',
+    backgroundColor: '#0a0a0a',
+    color: '#ffffff',
+    fontFamily: 'Orbitron, sans-serif',
+    minHeight: '100vh',
   },
   heading: {
-    fontSize: '28px',
-    marginBottom: '20px',
+    fontSize: '36px',
+    marginBottom: '40px',
+    textAlign: 'center',
+    color: '#00ffcc',
+    textShadow: '0 0 10px #00ffcc',
   },
   skillList: {
     display: 'flex',
     flexWrap: 'wrap',
-    gap: '10px',
+    justifyContent: 'center',
+    gap: '15px',
+    listStyle: 'none',
+    padding: 0,
   },
   skill: {
-    backgroundColor: '#333',
-    padding: '10px 15px',
-    borderRadius: '5px',
+    backgroundColor: '#1a1a1a',
+    border: '1px solid #00ffcc55',
+    boxShadow: '0 0 10px #00ffcc33',
+    padding: '12px 18px',
+    borderRadius: '8px',
     fontSize: '14px',
     display: 'flex',
     alignItems: 'center',
-    gap: '8px',
+    gap: '10px',
     cursor: 'pointer',
-    transition: 'all 0.3s ease',
+    transition: 'transform 0.3s ease, background-color 0.3s ease',
+  },
+  icon: {
+    color: '#00ffcc',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   skillText: {
-    marginLeft: '5px',
-  }
+    color: '#ffffff',
+    fontWeight: 500,
+  },
 };
 
-// Adding hover effect using CSS-in-JS
+// Add hover effect via dynamic CSS
 const hoverStyle = document.createElement('style');
 hoverStyle.innerHTML = `
   .skill-item:hover {
-    background-color: #555;
-    transform: scale(1.05);
+    background-color: #111;
+    transform: scale(1.08);
+    box-shadow: 0 0 20px #00ffcc88;
   }
 `;
 document.head.appendChild(hoverStyle);

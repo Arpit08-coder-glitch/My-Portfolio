@@ -32,15 +32,15 @@ const Projects = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
-        Projects
+        🚀 Projects
       </motion.h1>
-      
+
       <div style={styles.gridContainer}>
         {projects.map((project, index) => (
           <motion.div
             key={index}
             style={styles.card}
-            whileHover={{ scale: 1.05 }}
+            whileHover={{ scale: 1.05, boxShadow: '0 0 20px #00ffcc' }}
             transition={{ type: 'spring', stiffness: 300 }}
           >
             <img src={project.image} alt={project.name} style={styles.image} />
@@ -68,60 +68,70 @@ const Projects = () => {
 
 const styles = {
   section: {
-    padding: '40px',
-    color: '#fff',
-    backgroundColor: '#1a1a1a',
+    padding: '50px 30px',
+    color: '#ffffff',
+    backgroundColor: '#0a0a0a',
     minHeight: '100vh',
+    fontFamily: 'Orbitron, sans-serif',
   },
   heading: {
-    fontSize: '32px',
-    marginBottom: '30px',
+    fontSize: '36px',
+    marginBottom: '40px',
     textAlign: 'center',
+    color: '#00ffcc',
+    textShadow: '0 0 10px #00ffcc',
   },
   gridContainer: {
     display: 'flex',
     justifyContent: 'center',
-    gap: '20px',
+    gap: '24px',
     flexWrap: 'wrap',
   },
   card: {
-    width: '400px',
-    backgroundColor: '#242424',
-    borderRadius: '10px',
+    width: '360px',
+    backgroundColor: '#1a1a1a',
+    border: '1px solid rgba(0, 255, 255, 0.2)',
+    borderRadius: '16px',
     padding: '20px',
     textAlign: 'center',
-    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.3)',
-    transition: 'transform 0.3s ease',
+    boxShadow: '0 0 15px rgba(0, 255, 255, 0.1)',
+    transition: 'transform 0.3s ease, box-shadow 0.3s ease',
   },
   image: {
     width: '100%',
-    borderRadius: '10px',
+    borderRadius: '12px',
+    marginBottom: '15px',
+    border: '2px solid #00ffcc',
   },
   details: {
     marginTop: '10px',
   },
   projectTitle: {
-    fontSize: '20px',
-    color: '#4caf50',
+    fontSize: '22px',
+    color: '#00ffcc',
+    marginBottom: '10px',
   },
   description: {
     fontSize: '14px',
-    margin: '10px 0',
     lineHeight: '1.5',
+    color: '#dddddd',
   },
   technologies: {
     fontSize: '13px',
-    color: '#bbb',
-    marginBottom: '10px',
+    color: '#aaaaaa',
+    margin: '10px 0',
   },
   link: {
-    display: 'flex',
+    display: 'inline-flex',
     alignItems: 'center',
-    gap: '5px',
-    color: '#4caf50',
+    gap: '6px',
+    color: '#00ffcc',
     textDecoration: 'none',
     fontWeight: 'bold',
-    justifyContent: 'center',
+    border: '1px solid #00ffcc',
+    borderRadius: '6px',
+    padding: '6px 12px',
+    transition: 'all 0.3s ease',
   },
   icon: {
     marginLeft: '5px',

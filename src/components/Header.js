@@ -3,44 +3,32 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDownload, faLaptopCode } from "@fortawesome/free-solid-svg-icons";
 
 const Header = () => {
-  const [bgColor, setBgColor] = useState("#1E1E1E");
   const [text, setText] = useState("");
   const description = "A Passionate Developer who loves to code and create amazing web experiences.";
   const [charIndex, setCharIndex] = useState(0);
 
-  // Background color animation
-  useEffect(() => {
-    const interval = setInterval(() => {
-      const colors = ["#1E1E1E", "#282828", "#333", "#444"];
-      setBgColor(colors[Math.floor(Math.random() * colors.length)]);
-    }, 3000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  // Typing animation for description
+  // Typing animation
   useEffect(() => {
     if (charIndex < description.length) {
       const typingEffect = setTimeout(() => {
         setText(description.substring(0, charIndex + 1));
         setCharIndex((prev) => prev + 1);
-      }, 100); // Speed of typing
-
+      }, 100);
       return () => clearTimeout(typingEffect);
     }
   }, [charIndex, description]);
 
   return (
-    <header style={{ ...styles.header, backgroundColor: bgColor }}>
+    <header style={styles.header}>
+      <div style={styles.starsOverlay}></div>
+
       <div style={styles.content}>
-        {/* Profile Picture with Animation */}
         <img src="/profile.jpg" alt="Arpit Singh" style={styles.profilePic} className="profile-pic" />
 
-        <h1>
+        <h1 style={styles.heading}>
           Hi, I'm Arpit Singh <span style={{ fontSize: "30px" }}>👋</span>
         </h1>
 
-        {/* Typing animation for the description */}
         <p style={styles.typingText}>
           {text} <FontAwesomeIcon icon={faLaptopCode} />
           <span style={styles.cursor}>|</span>
@@ -59,14 +47,40 @@ const Header = () => {
   );
 };
 
+// Styles
 const styles = {
   header: {
+    position: "relative",
     textAlign: "center",
-    padding: "50px 20px",
-    transition: "background-color 1s ease-in-out",
+    padding: "80px 20px",
+    minHeight: "100vh",
+    background: "radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%)",
+    color: "white",
+    overflow: "hidden",
+    fontFamily: "'Orbitron', sans-serif",
+  },
+  starsOverlay: {
+    position: "absolute",
+    width: "200%",
+    height: "200%",
+    top: 0,
+    left: 0,
+    backgroundImage: "url('https://raw.githubusercontent.com/VincentGarreau/particles.js/master/demo/media/stars.png')",
+    backgroundRepeat: "repeat",
+    animation: "moveStars 60s linear infinite",
+    zIndex: 0,
+    opacity: 0.3,
   },
   content: {
+    position: "relative",
+    zIndex: 2,
     margin: "auto",
+    maxWidth: "700px",
+  },
+  heading: {
+    fontSize: "2.5rem",
+    marginBottom: "20px",
+    color: "#00ffff",
   },
   profilePic: {
     width: "150px",
@@ -74,49 +88,59 @@ const styles = {
     borderRadius: "50%",
     objectFit: "cover",
     marginBottom: "15px",
-    border: "4px solid white",
-    boxShadow: "0 0 15px rgba(0, 0, 0, 0.2)",
+    border: "4px solid #00ffff",
+    boxShadow: "0 0 30px rgba(0, 255, 255, 0.6)",
     transition: "transform 0.3s ease-in-out",
   },
   typingText: {
     fontSize: "18px",
     fontWeight: "500",
-    minHeight: "24px", // Prevents shifting when animating
+    minHeight: "24px",
+    color: "#fff",
   },
   cursor: {
     animation: "blink 1s infinite",
+    color: "#00ffff",
   },
   button: {
-    marginTop: "15px",
+    marginTop: "20px",
     padding: "12px 20px",
     fontSize: "16px",
-    backgroundColor: "#FF5733",
-    color: "white",
+    backgroundColor: "#00ffff",
+    color: "#000",
     border: "none",
     borderRadius: "8px",
     cursor: "pointer",
     transition: "all 0.3s ease",
     fontWeight: "bold",
+    boxShadow: "0 0 10px #00ffff, 0 0 20px #00ffff",
   },
 };
 
-// Adding CSS Animations
+// Additional CSS
 const css = `
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+
   .profile-pic:hover {
     transform: scale(1.1);
   }
-  
+
   .download-button:hover {
-    background-color: #E04E2A;
+    background-color: #00cccc;
     transform: scale(1.05);
   }
-  
+
   @keyframes blink {
     50% { opacity: 0; }
   }
+
+  @keyframes moveStars {
+    from { transform: translate(0, 0); }
+    to { transform: translate(-50%, -50%); }
+  }
 `;
 
-// Adding the styles dynamically
+// Inject dynamic CSS
 const styleSheet = document.createElement("style");
 styleSheet.type = "text/css";
 styleSheet.innerText = css;
