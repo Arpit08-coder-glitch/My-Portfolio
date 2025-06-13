@@ -20,9 +20,9 @@ const App = () => {
       {/* Main Sections */}
       <main style={styles.main}>
         <AboutMe />
+        <Projects />
         <Skills />
         <Experience />
-        <Projects />
         <ContactForm />
       </main>
 
