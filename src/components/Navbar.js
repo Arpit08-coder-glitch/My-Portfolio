@@ -30,6 +30,11 @@ const Navbar = () => (
           </a>
         </li>
         <li style={styles.navItem}>
+          <a href="#projects" style={styles.link} onMouseEnter={hoverEffect} onMouseLeave={removeHoverEffect}>
+            <FaProjectDiagram style={styles.icon} />
+          </a>
+        </li>
+        <li style={styles.navItem}>
           <a href="#skills" style={styles.link} onMouseEnter={hoverEffect} onMouseLeave={removeHoverEffect}>
             <FaCode style={styles.icon} />
           </a>
@@ -37,11 +42,6 @@ const Navbar = () => (
         <li style={styles.navItem}>
           <a href="#experience" style={styles.link} onMouseEnter={hoverEffect} onMouseLeave={removeHoverEffect}>
             <FaBriefcase style={styles.icon} />
-          </a>
-        </li>
-        <li style={styles.navItem}>
-          <a href="#projects" style={styles.link} onMouseEnter={hoverEffect} onMouseLeave={removeHoverEffect}>
-            <FaProjectDiagram style={styles.icon} />
           </a>
         </li>
         <li style={styles.navItem}>

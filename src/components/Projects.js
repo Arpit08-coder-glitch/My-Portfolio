@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
 import BhuQuantaImage from './images/BhuQuanta.png';
-import ParkingImage from './images/Parking.png';
+import QuantasipImage from './images/Quantasip.png';
 
 const Projects = () => {
   const projects = [
@@ -15,12 +15,12 @@ const Projects = () => {
       image: BhuQuantaImage,
     },
     {
-      name: 'Parking Data Management System',
+      name: 'Quantasip',
       description:
-        'An Angular and Spring Boot-based parking management system, utilizing GeoServer and PostgreSQL for real-time parking tracking and data analytics.',
-      technologies: ['Angular', 'Spring Boot', 'GeoServer', 'PostgreSQL'],
-      link: 'http://waytest.quantasip.com/way/user/editor',
-      image: ParkingImage,
+        'Official website for Quantasip, showcasing services, products, and solutions in geospatial technology and data analytics. Built with modern web technologies for performance and accessibility.',
+      technologies: ['ReactJS', 'Tailwind CSS', 'Vercel'],
+      link: 'https://quantasip.com/',
+      image: QuantasipImage,
     },
   ];
 

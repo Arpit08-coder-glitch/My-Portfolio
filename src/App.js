@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Header from './components/Header';
@@ -7,17 +7,14 @@ import Skills from './components/Skills';
 import Experience from './components/Experience';
 import Projects from './components/Projects';
 import ContactForm from './components/ContactForm';
-                                                  
+
+
+
 const App = () => {
   return (
     <div style={styles.app}>
-      {/* Navigation Bar */}
       <Navbar />
-
-      {/* Header Section */}
       <Header />
-
-      {/* Main Sections */}
       <main style={styles.main}>
         <AboutMe />
         <Projects />
@@ -25,8 +22,6 @@ const App = () => {
         <Experience />
         <ContactForm />
       </main>
-
-      {/* Footer */}
       <Footer />
     </div>
   );
